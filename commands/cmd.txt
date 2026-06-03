@@ -3,7 +3,7 @@ Git Commands:
 1. push code
 git add .
 git commit -m "<statement>"
-git push -u origin main
+git push
 
 2. pull code
 git pull origin main
@@ -20,19 +20,38 @@ git branch -M main
 6. verify origin
 git remote -v
 
+7. first push (only once)
+git add .
+git commit -m "<statement>"
+git push -u origin main
+
+
 Docker Commands:
 
 1. Create environment
 docker compose up --watch
 
-2. Delete environment
+2. Create environment (background)
+docker compose up -d
+
+3. Delete environment
 docker compose down
 
-3. Check active containers
+4. Check active containers
 docker ps
 
-4. Check all containers
+5. Check all containers
 docker ps -a
+
+6. View logs
+docker compose logs -f
+
+7. Rebuild containers
+docker compose up --build
+
+8. Restart containers
+docker compose restart
+
 
 PM2:
 
@@ -44,20 +63,39 @@ pm2 stop salon-pos
 or
 pm2 stop <index number>
 
-3. check logs
-pm2 log salon-pos
+3. restart service
+pm2 restart salon-pos
 or
-pm2 log <index number>
+pm2 restart <index number>
 
-4. to see index number and list all process
+4. check logs
+pm2 logs salon-pos
+or
+pm2 logs <index number>
+
+5. see index number and list all processes
 pm2 list
+
+6. save process list
+pm2 save
+
+7. remove process
+pm2 delete salon-pos
+
 
 Install Packages:
 
 1. Install new packages
-npm install <package name>
+npm install <package-name>
 or
-npm i <package name>
+npm i <package-name>
 
-2. Initial Setup after Clone
-npm install (inside both frontend and api folder)
+2. Initial setup after clone
+npm install
+(inside both frontend and api folders)
+
+3. Install package and save to package.json
+npm install <package-name>
+
+4. Install package globally
+npm install -g <package-name>
