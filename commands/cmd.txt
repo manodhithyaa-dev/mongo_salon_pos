@@ -2,11 +2,23 @@ Git Commands:
 
 1. push code
 git add .
-git -m commit "<statement>"
+git commit -m "<statement>"
 git push -u origin main
 
 2. pull code
 git pull origin main
+
+3. check status
+git status
+
+4. set origin
+git remote add origin <repository-url>
+
+5. set branch as main
+git branch -M main
+
+6. verify origin
+git remote -v
 
 Docker Commands:
 
