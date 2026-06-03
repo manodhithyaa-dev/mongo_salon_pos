@@ -28,6 +28,8 @@ services:
     restart: unless-stopped
     ports:
       - "5001:5000"
+    environment:
+      - OPENROUTER_API_KEY=${OPEN_ROUTER_KEY_ONE}
 
     develop:
       watch:
@@ -39,6 +41,8 @@ services:
     restart: unless-stopped
     ports:
       - "5002:5000"
+    environment:
+      - OPENROUTER_API_KEY=${OPEN_ROUTER_KEY_TWO}
 
     develop:
       watch:
@@ -50,6 +54,8 @@ services:
     restart: unless-stopped
     ports:
       - "5003:5000"
+    environment:
+      - OPENROUTER_API_KEY=${OPEN_ROUTER_KEY_THREE}
 
     develop:
       watch:

@@ -11,7 +11,8 @@ app.use(CORS())
 app.get("/api", (req, res) => {
     res.json({
         hostname: os.hostname(),
-        message: "API Route Working"
+        message: "API Route Working",
+        api: process.env.OPENROUTER_API_KEY
     });
 });
 
