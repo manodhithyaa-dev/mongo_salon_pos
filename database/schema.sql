@@ -431,3 +431,102 @@ create table expenses (
 
 	constraint chk_expenses_amount check (amount >= 0)
 )
+
+create table day_book (
+	day_book_id int primary key auto_increment,
+	branch_id int not null,
+	business_date datetime not null,
+	opening_cash int not null,
+	cash_sales int not null,
+	cash_expenses int not null,
+	closing_cash int not null,
+	closed_by int not null,
+	closed_at datetime not null,
+
+	constraint chk_opening_cash_day_book check (opening_cash >= 0),
+	constraint chk_cash_sales_day_book check (cash_sales >= 0),
+	constraint chk_cash_expenses_day_book check (cash_expenses >= 0),
+	constraint chk_closing_cash_day_book check (closing_cash >= 0)
+)
+
+create table campaigns (
+	campaign_id int primary key auto_increment,
+	campaign_name varchar(30) not null,
+	campaign_type varchar(30) not null,
+	message_template varchar(30) not null,
+	status bool default(1) not null,
+	created_at datetime default current_timestamp
+);
+
+create table campaign_rules (
+	rule_id int primary key auto_increment,
+	campaign_id int not null,
+	criteria_json json not null,
+	repeat_count int not null default(1)
+	is_active bool default(1)
+);
+
+create table leads (
+	lead_id int primary key auto_increment,
+	source varchar(30) not null,
+	full_name varchar(30) not null,
+	phone varchar(30) not null,
+	email varchar(30),
+	requested_service varchar(30) not null,
+	followup_date datetime not null,
+	followup_notes varchar(100),
+	status bool default(1),
+	created_at datetime default current_timestamp
+);
+
+create table complaints (
+	complaint_id int primary key auto_increment,
+	customer_id int not null,
+	invoice_id int not null,
+	complaint_level int not null,
+	description varchar(100),
+	corrective_action varchar(100),
+	status bool default(1),
+	closed_at datetime
+);
+
+create table notifications (
+	notification_id int primary key auto_increment,
+	customer_id int not null,
+	channel varchar(20) not null,
+	notification_type varchar(2) not null,
+	message varchar(100) not null,
+	status bool default(1),
+	sent_at datetime not null
+);
+
+create table audit_logs (
+	log_id int primary key auto_increment,
+	user_id int not null,
+	action varchar(30) not null,
+	table_name varchar(30) not null,
+	record_id int not null,
+	old_values varchar(30) not null,
+	new_values varchar(30) not null,
+	ip_address varchar(30) not null,
+	created_at datetime default current_timestamp
+);
+
+create table otp_logs (
+	otp_id int primary key auto_increment,
+	customer_id int not null,
+	card_id int not null, 
+	otp_code int not null,
+	expires_at datetime not null,
+	verified_at datetime not null,
+	status bool default(1),
+	created_at datetime default current_timestamp
+);
+
+create table complaints_feedback_link (
+	complaint_feedback_id int primary key auto_increment,
+	feedback_id int not null,
+	complaint_id int not null,
+	created_at datetime default current_timestamp
+);
+
