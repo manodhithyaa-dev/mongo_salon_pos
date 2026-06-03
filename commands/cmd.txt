@@ -21,3 +21,31 @@ docker ps
 
 4. Check all containers
 docker ps -a
+
+PM2:
+
+1. start service
+pm2 start "docker compose up --watch" --name salon-pos
+
+2. stop service
+pm2 stop salon-pos
+or
+pm2 stop <index number>
+
+3. check logs
+pm2 log salon-pos
+or
+pm2 log <index number>
+
+4. to see index number and list all process
+pm2 list
+
+Install Packages:
+
+1. Install new packages
+npm install <package name>
+or
+npm i <package name>
+
+2. Initial Setup after Clone
+npm install (inside both frontend and api folder)
