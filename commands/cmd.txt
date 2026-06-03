@@ -1,0 +1,23 @@
+Git Commands:
+
+1. push code
+git add .
+git -m commit "<statement>"
+git push -u origin main
+
+2. pull code
+git pull origin main
+
+Docker Commands:
+
+1. Create environment
+docker compose up --watch
+
+2. Delete environment
+docker compose down
+
+3. Check active containers
+docker ps
+
+4. Check all containers
+docker ps -a
